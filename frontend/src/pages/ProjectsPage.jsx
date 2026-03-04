@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 import { apiGet, apiPost } from "../api/client";
 
@@ -171,7 +172,10 @@ export default function ProjectsPage() {
         <ul>
           {projects.map((p) => (
             <li key={p.id}>
-              <b>{p.name}</b> — {p.status}
+              <Link to={`/projects/${p.id}`} style={{ textDecoration: "none", color: "black" }}>
+                <b>{p.name}</b>
+              </Link>{" "}
+              — {p.status}
             </li>
           ))}
         </ul>

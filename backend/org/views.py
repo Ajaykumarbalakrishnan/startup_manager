@@ -3,8 +3,10 @@ from .models import Company, Product
 from .serializers import CompanySerializer, ProductSerializer
 
 class CompanyViewSet(viewsets.ModelViewSet):
-    queryset = Company.objects.all().order_by("name")
     serializer_class = CompanySerializer
+
+    def get_queryset(self):
+        return Company.objects.all().order_by("name")
 
 class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
